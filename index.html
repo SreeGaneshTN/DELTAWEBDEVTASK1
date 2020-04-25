@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick popper game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="time">
+        <p>Time</p>
+        <label id='sec'>0</label>
+        <label>.</label>
+        <label id='ms'>00</label>
+    </div>
+    <div id="bt">
+        <p>Best Time</p>
+        <label id='bt.sec'>0</label>
+        <label>.</label>
+        <label id='bt.ms'>0</label>
+    </div>
+    <div class="Descrpition">
+        <p id='descp'>Click as quickly as possible in <strong>Ascending order</strong></p>
+        <span class='newgame' onclick=startgame()>Click for a new game</span>
+    </div>
+    <div id="game">
+        <h5 class='count'>3</h5>
+        <div class=" Grid">
+            <button class='play' value='1'>1</button>
+            <button class='play' value='2'>2</button>
+            <button class='play' value='3'>3</button>
+            <button class='play' value='4'>4</button>
+            <button class='play' value='5'>5</button>
+            <button class='play' value='6'>6</button>
+            <button class='play' value='7'>7</button>
+            <button class='play' value='8'>8</button>
+            <button class='play' value='9'>9</button>
+            <button class='play' value='10'>10</button>
+            <button class='play' value='11'>11</button>
+            <button class='play' value='12'>12</button>
+            <button class='play' value='13'>13</button>
+            <button class='play' value='14'>14</button>
+            <button class='play' value='15'>15</button>
+            <button class='play' value='16'>16</button>
+        </div>
+    </div>
+    <div class="result">
+        <h1 class='show'>Your time is </h1>
+        <p id='restart' onclick='restart()'>RESTART</p>
+    </div>
+    <div class="scoreboard">
+        <span onclick="scoreB()">ScoreBoard</span>
+        <ul id="highest">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>
