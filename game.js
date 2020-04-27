@@ -1,4 +1,4 @@
-localStorage.clear();
+
 var millisecLabel = document.getElementById('ms');
 var secondslabel = document.getElementById('sec');
 let Btseclabel = document.getElementById('bt.sec'),
@@ -17,14 +17,26 @@ function reset() {
     sec = 0;
     clearInterval(sm);
     clearInterval(ss);
-    disp.style.visibility = 'hidden';
+    disp.style.display = 'none';
     timeleft = 3;
-    document.querySelector('.count').style.visibility = 'visible';
+    document.getElementById('game').style.border = '0px';
+    document.querySelector('.count').style.display = 'flex';
     millisecLabel.innerHTML = msec;
     secondslabel.innerHTML = sec;
-    show.style.visibility = 'hidden';
+    show.style.display = 'none';
     document.querySelector('.count').textContent = timeleft;
 }
+function createbutton() {
+    for (let i = 1; i <= 16; i++) {
+        var bt = document.createElement('button');
+        disp.appendChild(bt);
+        bt.className = 'play';
+        bt.value = i;
+        bt.innerHTML = i;
+    }
+    disp.style.display = 'none';
+}
+
 
 function setTime() {
     msec++;
@@ -63,7 +75,7 @@ function stop(ss, sm) {
     best(next, k);
     Btseclabel.innerHTML = k.second;
     Btmillilabel.innerHTML = k.milli;
-    show.style.visibility = 'visible';
+    show.style.display='grid';
     if (n == 1)
         show.firstElementChild.innerHTML = `Your Time is ${k.second}.${k.milli}`;
     else
@@ -90,7 +102,6 @@ function starttimer() {
 
 }
 
-let btn = document.querySelectorAll('#game .play');
 var count = 17,
     correct = 1;
 let disp = document.querySelector('.Grid');
@@ -113,13 +124,15 @@ function clicked(n) {
 let a = 1;
 
 function playgame() {
-    ranNum(Randomnumbers);
+    
+let btn = document.querySelectorAll('#game .play');
+    ranNum(Randomnumbers,btn);
     starttimer();
     Array.from(btn).forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             clicked(e.target);
             if (count > 48) {
-                disp.style.visibility = 'hidden';
+                disp.style.display = 'none';
                 if (n == 1) {
                     k = new Rec(sec, msec % 100);
                     if (a == 1) {
@@ -150,9 +163,9 @@ function countdown() {
         timeleft--;
         document.querySelector('.count').textContent = timeleft;
         if (timeleft <= 0) {
-            document.querySelector('.count').style.visibility = 'hidden';
+            document.querySelector('.count').style.display = 'done';
             clearInterval(downloadTimer);
-            disp.style.visibility = 'visible';
+            disp.style.display = 'none';
             playgame();
         }
     }, 1000)
@@ -169,7 +182,7 @@ let numberGenerator = function(arr) {
     numberGenerator(arr);
 };
 
-function ranNum(RandomNumbers) {
+function ranNum(RandomNumbers,btn) {
     numberGenerator(RandomNumbers);
     Array.from(btn).forEach(function(btn) {
         btn.value = Randomnumbers.pop();
@@ -182,6 +195,7 @@ reset();
 function startgame() {
     if (n === undefined) {
         n = 1;
+        createbutton();
     } else
         n++;
     document.getElementById('highest').style.visibility = 'hidden';
