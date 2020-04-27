@@ -163,9 +163,9 @@ function countdown() {
         timeleft--;
         document.querySelector('.count').textContent = timeleft;
         if (timeleft <= 0) {
-            document.querySelector('.count').style.display = 'done';
+            document.querySelector('.count').style.display = 'none';
             clearInterval(downloadTimer);
-            disp.style.display = 'none';
+            disp.style.display = 'grid';
             playgame();
         }
     }, 1000)
